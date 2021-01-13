@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 
-class SearchAppointments extends Component {
+class SearchMitzvot extends Component {
     constructor() {
         super();
         this.state = {
@@ -23,10 +23,10 @@ class SearchAppointments extends Component {
                 <div className="col-md-6">
                     <div className="input-group">
                         <input
-                            id="SearchApts"
+                            id="SearchMitzvot"
                             type="text"
                             className="form-control"
-                            aria-label="Search Appointments"
+                            aria-label="Search Mitzvot"
                             name='queryText'
                             value={this.state.queryText}
                             onChange={e => this.queryInput(e)}
@@ -46,30 +46,30 @@ class SearchAppointments extends Component {
                             <div className="sort-menu dropdown-menu dropdown-menu-right">
                                 <button className={
                                     'sort-by dropdown-item ' +
-                                    (this.props.orderBy === 'petName' ? 'active' : '')} 
-                                    value="petName"
+                                    (this.props.orderBy === 'Receptor' ? 'active' : '')} 
+                                    value="Receptor"
                                     name='orderBy'
                                     onClick={this.props.setSort}
                                     href="#">
-                                    Pet Name
+                                    Receptor
                                 </button>
                                 <button className={
                                     'sort-by dropdown-item ' +
-                                    (this.props.orderBy === 'aptDate' ? 'active' : '')} 
-                                    value='aptDate'
+                                    (this.props.orderBy === 'verseLocation' ? 'active' : '')} 
+                                    value='VerseLocation'
                                     name='orderBy'
                                     onClick={this.props.setSort}
                                     href="#">
-                                    Date
+                                    Verse Location
                                 </button>
                                 <button className={
                                     'sort-by dropdown-item ' +
-                                    (this.props.orderBy === 'ownerName' ? 'active' : '')} 
-                                    value='ownerName'
+                                    (this.props.orderBy === 'mitzvot' ? 'active' : '')} 
+                                    value='mitzvot'
                                     name='orderBy'
                                     onClick={this.props.setSort}
                                     href="#">
-                                    Owner
+                                    Mitzvot
                                 </button>
                                 <div role="separator" className="dropdown-divider" />
                                 <button className={
@@ -100,4 +100,4 @@ class SearchAppointments extends Component {
     }
 }
 
-export default SearchAppointments;
+export default SearchMitzvot;
