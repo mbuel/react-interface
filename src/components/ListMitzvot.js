@@ -7,22 +7,22 @@ class ListMitzvot extends Component {
     render() {
         console.log(this.props.mitzvot);
         return (
-            <div className="appointment-list item-list mb-3">
+            <div className="mitzvot-list item-list mb-3">
             {this.props.mitzvot.map( item => (
-                <div className="pet-item col media py-3" key={item.mitzvotID}>
+                <div className="mitzvot-item col media py-3" key={item.mitzvotID}>
                 <div className="mr-3">
-                    <button className="pet-delete btn btn-sm btn-danger"
+                    <button className="mitzvot-delete btn btn-sm btn-danger"
                         onClick={() => this.props.deleteMitzvot(item)}
                     ><MdDeleteForever /></button>
                 </div>
     
-                <div className="pet-info media-body">
-                    <div className="pet-head d-flex">
+                <div className="mitzvot-info media-body">
+                    <div className="mitzvot-head d-flex">
                         <span 
-                            className="pet-name"
+                            className="mitzvot-receptor"
                             >{item.Receptor}</span>
-                        <span className="pet-date ml-auto">
-                            <div className="apt-notes">{item.VerseLocation}</div>
+                        <span className="mitzvot-date ml-auto">
+                            <div className="mitzvot-notes">{item.VerseLocation}</div>
                         </span>
                     </div>
     
@@ -30,7 +30,7 @@ class ListMitzvot extends Component {
                         <span className="label-item">Applicable: </span>
                         <span>{item.Applicable}</span>
                     </div>
-                    <div className="apt-notes">{item.mitzvot}</div>
+                    <div className="mitzvot-notes">{item.mitzvot}</div>
                 </div>
                 </div>
             ))}

@@ -2,19 +2,37 @@
     {
         "Receptor": "YHVH",
         "Applicable": "All",
-        "mitzvot": "To know YHVH exists",
+        "mitzvot": "To know YHVH exists, and worship Him alone.",
         "VerseLocation": "Ex 20:2, Deut 5:6"
-    },
-    {
-        "Receptor": "YHVH",
-        "Applicable": "All",
-        "mitzvot": "To not worship any other Elohim",
-        "VerseLocation": "Ex 20:3"
     },
     {
         "Receptor": "YHVH",
         "Applicable": "All",
         "mitzvot": "Do not blasphemy YHVH or the Ruach - it is the only sin He will not forgive",
-        "VerseLocation": "Ex 20:2, Deut 5:6"
+        "VerseLocation": "Ex 20:3"
+    },
+    {
+      "Receptor": "YHVH",
+      "Applicable": "All",
+      "mitzvot": "Do not create any images, idols and place your heart on them for worship.",
+      "VerseLocation": "Ex 20:5, Deut 5:7"
+    },
+    {
+      "Receptor": "YHVH",
+      "Applicable": "All",
+      "mitzvot": "Remember the Sabbath day, keep it set-apart.",
+      "VerseLocation": "Ex 20:8-10"
+    },
+    {
+      "Receptor": "MANKIND",
+      "Applicable": "All",
+      "mitzvot": "Honor your Father, and your Mother.",
+      "VerseLocation": "Ex 20:12"
+    },
+    {
+      "Receptor": "MANKIND",
+      "Applicable": "All",
+      "mitzvot": "Do not murder.",
+      "VerseLocation": "Ex 20:13"
     }
 ]

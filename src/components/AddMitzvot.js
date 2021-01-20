@@ -56,10 +56,10 @@ class AddAppointments extends Component {
         return (
             <div className={
                 "card textcenter mt-3" + 
-                (this.props.formDisplay ? '' : ' add-appointment')
+                (this.props.formDisplay ? '' : ' add-mitzvot')
             }>
                 <div 
-                    className="apt-addheading card-header bg-primary text-white"
+                    className="mitzvot-heading card-header bg-primary text-white"
                     onClick={this.props.toggleForm}>
                     <FaPlus /> Add Mitzvot
                 </div>

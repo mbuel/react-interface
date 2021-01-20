@@ -14,7 +14,7 @@ class App extends Component {
       mitzvot: [],
       formDisplay: false,
       orderBy: 'Applicable',
-      orderDir: 'asc',
+      orderDir: 'desc',
       queryText : '',
       lastIndex: 0
     };
