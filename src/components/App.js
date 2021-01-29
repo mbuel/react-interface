@@ -98,7 +98,7 @@ class App extends Component {
         eachItem['Applicable']
         .toLowerCase()
         .includes(this.state.queryText.toLowerCase()) ||
-        eachItem['mitzvot']
+        eachItem['command']
         .toLowerCase()
         .includes(this.state.queryText.toLowerCase())
       )

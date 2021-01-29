@@ -30,7 +30,7 @@ class ListMitzvot extends Component {
                         <span className="label-item">Applicable: </span>
                         <span>{item.Applicable}</span>
                     </div>
-                    <div className="mitzvot-notes">{item.mitzvot}</div>
+                    <div className="mitzvot-notes">{item.command}</div>
                 </div>
                 </div>
             ))}
