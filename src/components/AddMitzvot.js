@@ -6,11 +6,10 @@ class AddAppointments extends Component {
     constructor() {
         super();
         this.state = {
-            petName : '',
-            ownerName : '',
-            aptDate : '',
-            aptTime : '',
-            aptNotes : ''
+          Receptor : '',
+          Applicable : '',
+          VerseLocation : '',
+          mitzvot : ''
         }
         this.handleChange = this.handleChange.bind(this);
         this.resetForm = this.resetForm.bind(this);
@@ -19,11 +18,10 @@ class AddAppointments extends Component {
 
     resetForm() {
         this.setState({
-            petName : '',
-            ownerName : '',
-            aptDate : '',
-            aptTime : '',
-            aptNotes : ''
+          Receptor : '',
+          Applicable : '',
+          VerseLocation : '',
+          mitzvot : ''
         });
 
         this.props.toggleForm();
@@ -31,14 +29,14 @@ class AddAppointments extends Component {
 
     handleAdd(e) {
         e.preventDefault();
-        let tempApt = {
-            petName: this.state.petName,
-            ownerName: this.state.ownerName,
-            aptDate: this.state.aptDate + ' ' + this.state.aptTime,
-            aptNotes: this.state.aptNotes
+        let tempMitzvot = {
+          Receptor: this.state.Receptor,
+          Applicable: this.state.Applicable,
+          VerseLocation: this.state.VerseLocation,
+          mitzvot: this.state.mitzvot
         }
 
-        this.props.addAppointment(tempApt);
+        this.props.addMitzvot(tempMitzvot);
 
         this.resetForm();
     }
@@ -58,12 +56,12 @@ class AddAppointments extends Component {
         return (
             <div className={
                 "card textcenter mt-3" + 
-                (this.props.formDisplay ? '' : ' add-appointment')
+                (this.props.formDisplay ? '' : ' add-mitzvot')
             }>
                 <div 
-                    className="apt-addheading card-header bg-primary text-white"
+                    className="mitzvot-heading card-header bg-primary text-white"
                     onClick={this.props.toggleForm}>
-                    <FaPlus /> Add Appointment
+                    <FaPlus /> Add Mitzvot
                 </div>
   
                 <div className="card-body">
@@ -72,18 +70,18 @@ class AddAppointments extends Component {
                         <div className="form-group form-row">
                   <label
                     className="col-md-2 col-form-label text-md-right"
-                    htmlFor="petName"
+                    htmlFor="Receptor"
                     readOnly
                   >
-                    Pet Name
+                    Receptor
                   </label>
                   <div className="col-md-10">
                     <input
                       type="text"
                       className="form-control"
-                      name="petName"
-                      placeholder="Pet's Name"
-                      value={this.state.petName}
+                      name="Receptor"
+                      placeholder="Receptor of Mitzvot?"
+                      value={this.state.Receptor}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -92,70 +90,56 @@ class AddAppointments extends Component {
                         <div className="form-group form-row">
                   <label
                     className="col-md-2 col-form-label text-md-right"
-                    htmlFor="ownerName"
+                    htmlFor="Applicable"
                   >
-                    Pet Owner
+                    Applicable
                   </label>
                   <div className="col-md-10">
                     <input
                       type="text"
                       className="form-control"
-                      name="ownerName"
-                      placeholder="Owner's Name"
-                      value={this.state.ownerName}
+                      name="Applicable"
+                      placeholder="Mitzvot Applicable to?"
+                      value={this.state.Applicable}
                       onChange={this.handleChange}
                     />
                   </div>
                 </div>
   
-                        <div className="form-group form-row">
+                <div className="form-group form-row">
                   <label
                     className="col-md-2 col-form-label text-md-right"
-                    htmlFor="aptDate"
+                    htmlFor="VerseLocation"
                   >
-                    Date
+                    Verse Location
                   </label>
-                  <div className="col-md-4">
+                  <div className="col-md-10 col-form-label text-md-right">
                     <input
-                      type="date"
+                      type="text"
                       className="form-control"
-                      name="aptDate"
-                      id="aptDate"
-                      value={this.state.aptDate}
+                      name="VerseLocation"
+                      id="VerseLocation"
+                      placeholder="Exodus 23:2"
+                      value={this.state.VerseLocation}
                       onChange={this.handleChange}
                     />
                   </div>
-                  <label
-                    className="col-md-2 col-form-label text-md-right"
-                    htmlFor="aptTime"
-                  >
-                    Time
-                  </label>
-                  <div className="col-md-4">
-                    <input
-                      type="time"
-                      className="form-control"
-                      name="aptTime"
-                      id="aptTime"
-                      value={this.state.aptTime}
-                      onChange={this.handleChange}
-                    />
-                  </div>
+
                 </div>
   
                         <div className="form-group form-row">
-                  <label className="col-md-2 text-md-right" htmlFor="aptNotes">
-                    Apt. Notes
+                  <label className="col-md-2 text-md-right" htmlFor="mitzvot">
+                    mitzvot
                   </label>
                   <div className="col-md-10">
                     <textarea
                       className="form-control"
                       rows="4"
                       cols="50"
-                      name="aptNotes"
-                      id="aptNotes"
-                      placeholder="Appointment Notes"
-                      value={this.state.aptNotes}
+                      name="mitzvot"
+                      id="mitzvot"
+                      placeholder="mitzvot Notes"
+                      value={this.state.mitzvot}
                       onChange={this.handleChange}
                     />
                   </div>
@@ -167,7 +151,7 @@ class AddAppointments extends Component {
                       type="submit"
                       className="btn btn-primary d-block ml-auto"
                     >
-                      Add Appointment
+                      Add Mitzvot
                     </button>
                   </div>
                 </div>

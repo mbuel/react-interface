@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 import '../css/App.css';
 
-import AddAppointments from './AddAppointments';
-import SearchAppointments from './SearchAppointments';
-import ListAppointments from './ListAppointments';
+import AddAppointments from './AddMitzvot';
+import SearchMitzvot from './SearchMitzvot';
+import ListMitzvot from './ListMitzvot';
 
 import { without } from 'lodash'
 
@@ -11,16 +11,16 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      myAppointments: [],
+      mitzvot: [],
       formDisplay: false,
-      orderBy: 'petName',
-      orderDir: 'asc',
+      orderBy: 'Applicable',
+      orderDir: 'desc',
       queryText : '',
       lastIndex: 0
     };
-    this.deleteAppointment = this.deleteAppointment.bind(this);
+    this.deleteMitzvot = this.deleteMitzvot.bind(this);
     this.toggleForm = this.toggleForm.bind(this);
-    this.addAppointment = this.addAppointment.bind(this);
+    this.addMitzvot = this.addMitzvot.bind(this);
     this.setSort = this.setSort.bind(this);
   }
 
@@ -30,21 +30,21 @@ class App extends Component {
     });
   }
 
-  addAppointment(apt) {
-    let tempApts = this.state.myAppointments;
+  addMitzvot(apt) {
+    let tempMitzvot = this.state.mitzvot;
     apt.aptId = this.state.lastIndex;
-    tempApts.unshift(apt);
+    tempMitzvot.unshift(apt);
     this.setState({
-      myAppointments: tempApts,
+      mitzvot: tempMitzvot,
       lastIndex: this.state.lastIndex + 1
     })
   }
 
-  deleteAppointment(apt) {
-    let tempApts = this.state.myAppointments;
-    tempApts = without(tempApts, apt);
+  deleteMitzvot(apt) {
+    let tempMitzvot = this.state.mitzvot;
+    tempMitzvot = without(tempMitzvot, apt);
     this.setState({
-      myAppointments: tempApts
+      mitzvot: tempMitzvot
     });
   }
 
@@ -57,16 +57,17 @@ class App extends Component {
   }
 
   componentDidMount() {
-    fetch('./data.json')
+    fetch('./laws.json')
       .then(response => response.json())
       .then(result => {
-        const apts = result.map(item => {
-          item.aptId = this.state.lastIndex;
+        const laws = result.map(item => {
+          item.mitzvotID = this.state.lastIndex;
           this.setState({ lastIndex: this.state.lastIndex + 1 })
           return item;
         });
+        console.log(laws);
         this.setState({
-          myAppointments: apts
+          mitzvot: laws
         })
       });
 
@@ -75,7 +76,7 @@ class App extends Component {
 
   render() {
     let order;
-    let filteredApts = this.state.myAppointments;
+    let filteredMitzvot = this.state.mitzvot;
 
     if (this.state.orderDir === 'asc') {
       order = 1;
@@ -83,7 +84,7 @@ class App extends Component {
       order = -1;
     }
 
-    filteredApts = filteredApts.sort((a, b) => {
+    filteredMitzvot = filteredMitzvot.sort((a, b) => {
       if (a[this.state.orderBy].toLowerCase() < b[this.state.orderBy].toLowerCase()) {
         return -1 * order;
       } else {
@@ -91,13 +92,13 @@ class App extends Component {
       }
     }).filter(eachItem => {
       return(
-        eachItem['petName']
+        eachItem['Receptor']
         .toLowerCase()
         .includes(this.state.queryText.toLowerCase()) ||
-        eachItem['ownerName']
+        eachItem['Applicable']
         .toLowerCase()
         .includes(this.state.queryText.toLowerCase()) ||
-        eachItem['aptNotes']
+        eachItem['command']
         .toLowerCase()
         .includes(this.state.queryText.toLowerCase())
       )
@@ -112,14 +113,14 @@ class App extends Component {
                 <AddAppointments
                   formDisplay={this.state.formDisplay}
                   toggleForm={this.toggleForm}
-                  addAppointment={this.addAppointment} />
-                <SearchAppointments
+                  addMitzvot={this.addMitzvot} />
+                <SearchMitzvot
                   orderBy={this.state.orderBy}
                   orderDir={this.state.orderDir}
                   setSort={this.setSort} />
-                <ListAppointments
-                  appointments={filteredApts}
-                  deleteAppointment={this.deleteAppointment} />
+                <ListMitzvot
+                  mitzvot={filteredMitzvot}
+                  deleteMitzvot={this.deleteMitzvot} />
               </div>
             </div>
           </div>
